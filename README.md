@@ -23,7 +23,7 @@ flightinfoapi a Java Springboot Demo REST Api based on the Flight Aware site
  
      1) You enter a large chunk of flight data bassed on the airplane`s tail-number EC-MYT by running this url: http://localhost:8085/findFlightInfoByTailnumber/EC-MYT The data will be stored into two tables called flight_info and airport_display.
      
-     2) You further may filter the data by the flight-number IBB2081, by using the next url: http://localhost:8085/findFlightInfosByIdent/IBB2081 
+     2) You further may filter the data by, for instance, the flight-number IBB2081, using the next url: http://localhost:8085/findFlightInfosByIdent/IBB2081 
 
 The first url calls an external service (FlightAware/ HttpURLConnection) to obtain the flight data. And the second (internal) service will filter the data using Spring-data JPA. 
 
@@ -31,7 +31,7 @@ A third url:
 
   http://localhost:8085/flightInfoTemplate?ident=EC-MYT&howMany=15&offset=0
   
-implements the Spring Rest Template as an alternative of the previous used HttpURLConnection.
+implements the Spring Rest Template as an alternative to the previous used HttpURLConnection.
 
  ### Still to do:
  
