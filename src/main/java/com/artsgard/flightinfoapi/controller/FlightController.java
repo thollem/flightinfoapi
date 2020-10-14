@@ -37,7 +37,7 @@ public class FlightController {
     public ResponseEntity<?> findFlightInfoByTailnumber(@PathVariable("tailnumber") String tailnumber) {
         int offset = 0;
         List<FlightInfo> flights = new ArrayList();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 10; i++) {
             FlightInfoExResult infoResult = flightExtService.getFlightInfo(tailnumber, offset);
             offset = infoResult.getOffset();
             flights.addAll(flightService.saveAllFlightInfo(infoResult.getFlights()));
