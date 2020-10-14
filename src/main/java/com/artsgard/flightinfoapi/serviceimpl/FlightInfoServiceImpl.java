@@ -14,32 +14,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
  *
  * @author artsgard
  */
-@Service
+@Service//("flightService")
 public class FlightInfoServiceImpl implements FlightInfoService {
 
     org.slf4j.Logger logger;
 
     @Autowired
+    //@Qualifier("mapperService")
     private MapperService mapperService;
 
-    @Autowired
+    @Autowired 
+    //@Qualifier("flightRepo")
     private FlightInfoRepository flightRepo;
 
     @Autowired
+    //@Qualifier("airportRepo")
     private AirportDisplayRepository airportRepo;
 
     @Autowired
+    //@Qualifier("airportExtService")
     private AirportDisplayExternalService airportExternalService;
 
-    public FlightInfoServiceImpl() {
-
-    }
+    public FlightInfoServiceImpl() { }
 
     @Override
     public List<FlightInfo> findAllFlightInfos() throws ResourceNotFoundException {

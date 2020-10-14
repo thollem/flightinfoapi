@@ -1,7 +1,5 @@
 package com.artsgard.flightinfoapi.controller;
 
-import com.artsgard.flightinfoapi.DTO.FlightInfo;
-import com.artsgard.flightinfoapi.DTO.FlightInfoExResult;
 import com.artsgard.flightinfoapi.DTO.JsonWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class RestTemplateController {
 
     @Autowired
-    @Qualifier("flightRestTemplate")
+    @Qualifier("restTemplate")
     RestTemplate restTemplate;
     
     private final static String BASEURL = "https://flightxml.flightaware.com/json/FlightXML2/FlightInfoEx";

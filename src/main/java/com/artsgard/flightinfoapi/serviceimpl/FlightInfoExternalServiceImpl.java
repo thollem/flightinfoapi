@@ -31,7 +31,7 @@ import org.springframework.web.util.UriComponentsBuilder;
  * @author artsgard
  * EC-MYT
  */
-@Service
+@Service//("flightExtService")
 public class FlightInfoExternalServiceImpl implements FlightInfoExternalService {
 
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(FlightInfoExternalServiceImpl.class);
@@ -51,6 +51,7 @@ public class FlightInfoExternalServiceImpl implements FlightInfoExternalService 
     private FlightInfo flightInfo;
     private List<FlightInfo> flightInfos;
 
+    @Override
     public FlightInfoExResult getFlightInfo(String tailnumber, int offSet) {
         auth = authUsername + ":" + authApikey;
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(BASEURL)
@@ -146,17 +147,18 @@ public class FlightInfoExternalServiceImpl implements FlightInfoExternalService 
     }
 
     private String readErrorStream(final InputStream inputStream) throws IOException {
-        final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        final StringBuilder responseString = new StringBuilder();
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            responseString.append(line);
+        final StringBuilder responseString;
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
+            responseString = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                responseString.append(line);
+            }
         }
-        bufferedReader.close();
         return responseString.toString();
     }
 
-    private HttpURLConnection getConnection(String url, String requestMethod, String contentType) {
+    public HttpURLConnection getConnection(String url, String requestMethod, String contentType) {
         try {
             URL serverAddress = new URL(url);
             Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("some proxy here", 8080));

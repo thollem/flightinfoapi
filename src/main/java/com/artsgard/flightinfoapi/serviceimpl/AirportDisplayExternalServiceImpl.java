@@ -27,7 +27,7 @@ import org.springframework.web.util.UriComponentsBuilder;
  * @author artsgard
  *
  */
-@Service
+@Service//("airportExtService")
 public class AirportDisplayExternalServiceImpl implements AirportDisplayExternalService {
 
     private final static org.slf4j.Logger logger = LoggerFactory.getLogger(AirportDisplayExternalServiceImpl.class);

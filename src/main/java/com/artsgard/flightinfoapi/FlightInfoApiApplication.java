@@ -1,9 +1,7 @@
 package com.artsgard.flightinfoapi;
 
-import com.artsgard.flightinfoapi.exception.ErrorHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,8 +14,8 @@ import org.springframework.web.client.RestTemplate;
 @PropertySource({"classpath:application.properties"})
 public class FlightInfoApiApplication {
     
-    @Autowired
-    ErrorHandler errorHandler;
+    //@Autowired
+    //ErrorHandler errorHandler;
 
     @Value("${auth.username}")
     private String authUsername;
@@ -29,9 +27,9 @@ public class FlightInfoApiApplication {
         SpringApplication.run(FlightInfoApiApplication.class, args);
     }
 
-    @Bean(name = "flightRestTemplate")
+    @Bean(name = "restTemplate")
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.basicAuthentication(authUsername, authApikey).errorHandler(errorHandler).build();
+        return builder.basicAuthentication(authUsername, authApikey).build(); //.errorHandler(errorHandler).build();
     }
 
     @Bean

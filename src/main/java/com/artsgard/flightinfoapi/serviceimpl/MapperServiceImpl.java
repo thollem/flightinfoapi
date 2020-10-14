@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
  * @author WillemDragstra
  *
  */
-@Service
+@Service//("mapperService")
 public class MapperServiceImpl implements MapperService {
 
     org.slf4j.Logger logger;

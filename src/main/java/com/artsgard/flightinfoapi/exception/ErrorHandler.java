@@ -1,3 +1,4 @@
+/*
 package com.artsgard.flightinfoapi.exception;
 
 import com.artsgard.flightinfoapi.DTO.FlightxmlError;
@@ -26,3 +27,4 @@ public class ErrorHandler implements ResponseErrorHandler {
         System.err.println(String.format("Error: %s", error.getError()));
     }
 }
+*/

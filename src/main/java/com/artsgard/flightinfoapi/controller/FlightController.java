@@ -2,7 +2,6 @@ package com.artsgard.flightinfoapi.controller;
 
 import com.artsgard.flightinfoapi.DTO.FlightInfo;
 import com.artsgard.flightinfoapi.DTO.FlightInfoExResult;
-import com.artsgard.flightinfoapi.service.AirportDisplayExternalService;
 import com.artsgard.flightinfoapi.service.FlightInfoExternalService;
 import com.artsgard.flightinfoapi.service.FlightInfoService;
 import java.util.ArrayList;
@@ -27,19 +26,18 @@ public class FlightController {
     org.slf4j.Logger logger = LoggerFactory.getLogger(FlightController.class);
 
     @Autowired
+    //@Qualifier("flightExtService")
     private FlightInfoExternalService flightExtService;
-
-    @Autowired
-    private AirportDisplayExternalService airportExtService;
     
     @Autowired
+    //@Qualifier("flightService")
     private FlightInfoService flightService;
 
     @GetMapping(path = "/findFlightInfoByTailnumber/{tailnumber}", produces = "application/json")
     public ResponseEntity<?> findFlightInfoByTailnumber(@PathVariable("tailnumber") String tailnumber) {
         int offset = 0;
         List<FlightInfo> flights = new ArrayList();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             FlightInfoExResult infoResult = flightExtService.getFlightInfo(tailnumber, offset);
             offset = infoResult.getOffset();
             flights.addAll(flightService.saveAllFlightInfo(infoResult.getFlights()));
@@ -48,8 +46,8 @@ public class FlightController {
     }
     
     @GetMapping(path = "/findFlightInfosByIdent/{ident}", produces = "application/json")
-    public ResponseEntity<?> findFlightInfosByIdent(@PathVariable("ident") String ident) {
-        return new ResponseEntity<>(flightService.findFlightsInfoByIdent(ident), HttpStatus.OK);
+    public ResponseEntity<List<FlightInfo>> findFlightInfosByIdent(@PathVariable("ident") String ident) {
+        return new ResponseEntity<List<FlightInfo>>(flightService.findFlightsInfoByIdent(ident), HttpStatus.OK);
     }
     
 }

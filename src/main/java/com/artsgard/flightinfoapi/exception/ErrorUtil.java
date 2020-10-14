@@ -1,3 +1,4 @@
+/*
 package com.artsgard.flightinfoapi.exception;
 
 import org.springframework.http.HttpStatus;
@@ -9,3 +10,4 @@ public class ErrorUtil {
         return (HttpStatus.Series.CLIENT_ERROR.equals(series) || HttpStatus.Series.SERVER_ERROR.equals(series));
     }
 }
+*/

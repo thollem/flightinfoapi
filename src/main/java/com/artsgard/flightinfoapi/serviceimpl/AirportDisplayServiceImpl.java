@@ -11,20 +11,23 @@ import com.artsgard.flightinfoapi.service.AirportDisplayService;
 import java.util.ArrayList;
 import java.util.Optional;
 import com.artsgard.flightinfoapi.repository.AirportDisplayRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
  * @author WillemDragstra
  */
-@Service
+@Service//("airportService")
 public class AirportDisplayServiceImpl implements AirportDisplayService {
 
     org.slf4j.Logger logger;
 
     @Autowired
+    //@Qualifier("mapperService")
     private MapperService mapperService;
 
     @Autowired
+    //@Qualifier("airportRepo")
     private AirportDisplayRepository displayRepo;
 
     public AirportDisplayServiceImpl() { }
