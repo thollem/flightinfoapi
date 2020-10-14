@@ -33,11 +33,21 @@ A third url:
   
 implements the Spring Rest Template as an alternative to the previous used HttpURLConnection.
 
- ### Still to do:
- 
- 1) Some test classes
- 2) A Redis DB implementation
- 3) A Docker/ Compose part of the api
+ ### Some additional info concerning Testing and Docker
  
 Unfortunately I did not have time enough since I had trouble working with the FligthAware api, This api does not follow any property code conventions! Take a close look at the FlightInfo DTO and you understand what I am talking about!
+
+Here you find many test classes and methods concerning testing in Spring JUnit Mockito:
+
+    https://github.com/artsgard/socioregister/tree/master/src/test/java/com/artsgard/socioregister
+
+    https://github.com/artsgard/hotelbookingbackend/tree/master/src/test/java/com/artsgard/hotelbookingbackend
+
+And find next some Docker and Compose files done my myself:
+
+    https://github.com/artsgard/sociodocker
+
+
+
+
 
